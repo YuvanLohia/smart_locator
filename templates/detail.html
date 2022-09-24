@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%block body%}
+<article class="media content-section">
+
+    <div class="media-body">
+
+      <h2 class="article-title">{{ object.uname }}</h2>
+
+    </div>
+    <div class="article-metadata">
+
+
+          <div>
+
+              {%if object.taken %}
+              <a class="btn btn-danger btn-sm m-1" href = "{{url_for('return_o',object_id=object.id)}}">Return</a>
+              {%else%}
+              <a class="btn btn-primary btn-sm mt-1 mb-1" href = "{{url_for('search',object_id=object.id)}}">Search</a>
+            <a class="btn btn-danger btn-sm m-1" href = "{{url_for('take',object_id=object.id)}}">Take</a>
+              {%endif%}
+          </div>
+
+      </div>
+  </article>
+
+{%endblock%}

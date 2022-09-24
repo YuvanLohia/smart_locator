@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%block body%}
+{%for re in result%}
+ <article class="media content-section" {%if re.taken%} style="background-color : rgba(204, 204, 204,1)" {%endif%}>
+
+          <div class="media-body" >
+
+              <h2> {%if not re.taken%}<a class="article-title"style="text-decoration: none;" href="{{ url_for('detail', object_id=re.id) }}">{%endif%}{{ re.uname }}{%if not re.taken%}</a>{%endif%}</h2>
+
+          </div>
+        </article>
+{%endfor%}
+{%endblock%}

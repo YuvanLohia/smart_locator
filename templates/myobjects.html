@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%block body%}
+{%for re in objlist%}
+ <article class="media content-section">
+
+          <div class="media-body" >
+
+              <h2> <a class="article-title"style="text-decoration: none;" href="{{ url_for('detail', object_id=re.id) }}">{{ re.uname }}</a></h2>
+
+          </div>
+        </article>
+{%endfor%}
+{%endblock%}
