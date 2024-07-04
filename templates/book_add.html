@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%block body%}
+<form method="POST" action="">
+
+        {{form.hidden_tag()}}
+        <fieldset class="form-group">
+            <legend>Add a new item</legend>
+            <div class="form-group">
+                {{form.bname.label(class = "form-control-label")}}
+                {{form.bname(class = "form-control form-control")}}
+                {{form.author.label(class = "form-control-label")}}
+                {{form.author(class = "form-control form-control")}}
+                {{form.description.label(class = "form-control-label")}}
+                {{form.description(class = "form-control form-control")}}
+                {{form.shelf_no.label(class = "form-control-label")}}
+                {{form.shelf_no(class = "form-control form-control")}}
+
+
+            </div>
+            <div class="form-group">
+                {{form.submit(class = "btn btn-outline-info")}}
+
+            </div>
+        </fieldset>
+    </form>
+{%endblock%}

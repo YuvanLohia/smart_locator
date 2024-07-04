@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%block body%}
+{%for re in result%}
+{%if re.username != "admin"%}
+ <article class="media content-section" >
+
+          
+            <h2  >{{ re.username }}
+            <a class = "btn btn-danger btn-sm m-1" href =  "{{url_for('deleuser',user_id=re.id)}}">Delete</a></h2>
+          
+</article>
+{%endif%}
+{%endfor%}
+{%endblock%}

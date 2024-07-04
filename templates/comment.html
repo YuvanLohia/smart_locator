@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{%block body%}
+<form method="POST" action="">
+
+        {{form.hidden_tag()}}
+        <fieldset class="form-group">
+            <legend>Comment on the {{type}}</legend>
+            <div class="form-group">
+                {{form.comment_title.label(class = "form-control-label")}}
+                {{form.comment_title(class = "form-control form-control")}}
+                {{form.comment_message.label(class = "form-control-label")}}
+                {{form.comment_message(class = "form-control form-control")}}
+            </div>
+            <div class="form-group">
+                {{form.submit(class = "btn btn-outline-info")}}
+
+            </div>
+        </fieldset>
+    </form>
+{%endblock%}

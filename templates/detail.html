@@ -5,19 +5,40 @@
     <div class="media-body">
 
       <h2 class="article-title">{{ object.uname }}</h2>
-
+      <h5>Author : {{object.author}}</h5>
+      <p>Description : {{object.description}}</p>
     </div>
     <div class="article-metadata">
 
 
           <div>
 
-              {%if object.taken %}
+              {%if object.taken == True and object.taken_id == current_user.id%}
               <a class="btn btn-danger btn-sm m-1" href = "{{url_for('return_o',object_id=object.id)}}">Return</a>
+              {%elif object.taken == True and current_user.username == "admin"%} 
+              <p class="article-content">The book is taken by {{ taken_name }}</p>
+              {%elif object.taken == True %}
+              <p class="article-content">Sorry the book is already taken</p>
               {%else%}
               <a class="btn btn-primary btn-sm mt-1 mb-1" href = "{{url_for('search',object_id=object.id)}}">Search</a>
             <a class="btn btn-danger btn-sm m-1" href = "{{url_for('take',object_id=object.id)}}">Take</a>
-              {%endif%}
+            <a class="btn btn-danger btn-sm m-1" href = "{{url_for('comment',object_id=object.id)}}">Comment</a>  
+            {%endif%}
+            <hr>
+            <h4>Comments</h2>
+
+            {% for c in comment%}
+            <hr>
+            <small class='text-muted'>{{ comment[c][0] }}</small><br>
+            <small class="text-muted">{{ comment[c][1].Date}}</small>
+            <b><h4 class="article-title">{{comment[c][1].Comment_title}}</h2></b>
+            <p class="article-content">{{comment[c][1].Comment_message }}</p>
+            {% if comment[c][2] %}
+            <a class="btn btn-danger btn-sm m-1" href = "{{url_for('dele',comment_id=comment[c][1].id)}}">Delete</a>
+            {% endif %}
+
+            {%endfor%}
+            
           </div>
 
       </div>
